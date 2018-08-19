@@ -1,0 +1,45 @@
+package handlers;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Random;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.media.AudioClip;
+import javafx.stage.Stage;
+import model.game.Defuser;
+import view.MainMenu;
+
+public class HardButtonEventHandler implements EventHandler<ActionEvent> {
+
+	private Stage stage;
+	private MainMenu mainMenu;
+	private Button hardDiffButoon;
+	private ArrayList<AudioClip> audioClips;
+
+	public HardButtonEventHandler(Stage stage, MainMenu mainMenu, Button hardDiffButton, ArrayList<AudioClip> audioClips) {
+		
+		this.stage = stage;
+		this.mainMenu = mainMenu;
+		this.hardDiffButoon = hardDiffButton;
+		this.audioClips = audioClips;
+	}
+	
+	
+	public void handle(ActionEvent event) {
+		
+		Defuser.getInstance().setDifficulty(3);
+		Scene scene = mainMenu.creteGameScene();
+		
+		Random random = new Random();
+		AudioClip audio = this.audioClips.get(random.nextInt(this.audioClips.size()));
+		audio.setVolume(0.3);
+		audio.play();
+		
+		this.stage.setScene(scene);
+	}
+
+}
