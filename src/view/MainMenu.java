@@ -36,12 +36,12 @@ public class MainMenu extends VBox{
 		this.setAlignment(Pos.BOTTOM_CENTER);
 		this.buttonContainer.setPadding(new Insets(30));
 		
-		Image logo = new Image("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/minesweeper.png");
+		Image logo = new Image(ResourceHandler.getInstance().getClass().getResource("images/minesweeper.png").toString());
 		BackgroundImage background = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		this.setBackground(new Background(background));
 		
 		/*
-		AudioClip mainMenuAudio = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/mainmenu2.mp3");
+		AudioClip mainMenuAudio = new AudioClip(ResourceHandler.getInstance().getClass().getResources("sounds/mainmenu2.mp3").toString());
 		mainMenuAudio.setVolume(0.2);
 		mainMenuAudio.setCycleCount(AudioClip.INDEFINITE);
 		mainMenuAudio.play();
@@ -75,9 +75,9 @@ public class MainMenu extends VBox{
 	private ArrayList<AudioClip> setupAudioClips() {
 		
 		ArrayList<AudioClip> collection = new ArrayList<AudioClip>();
-		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup1.mp3"));
-		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup2.mp3"));
-		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup3.mp3"));
+		collection.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/setup1.mp3").toString()));
+		collection.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/setup2.mp3").toString()));
+		collection.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/setup3.mp3").toString()));
 		
 		return collection;
 	}

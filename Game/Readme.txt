@@ -1,4 +1,6 @@
-MineSweeper! V1.0
+MineSweeper! V1.1
+
+-Fixed file locating bugs that caused the game to crash.
 
 You will need Java Runtime Environment (JRE) to run this game. Download it from:
 **/-----------------------------/**

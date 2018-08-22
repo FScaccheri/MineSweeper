@@ -11,6 +11,7 @@ import javafx.scene.media.AudioClip;
 import model.cells.Cell;
 import model.cells.CellsBoard;
 import view.CellButtonsBoard;
+import view.ResourceHandler;
 
 public class Defuser {
 	
@@ -59,10 +60,10 @@ public class Defuser {
 		CellButtonsBoard.getInstance().getCellButton(position).setGraphic(mineImgView);
 		
 		ArrayList<AudioClip> explosionAudioClips = new ArrayList<AudioClip>();
-		explosionAudioClips.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/detonate1.mp3"));
-		explosionAudioClips.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/detonate2.mp3"));
-		explosionAudioClips.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/detonate3.mp3"));
-		explosionAudioClips.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/detonate4.mp3"));
+		explosionAudioClips.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/detonate1.mp3").toString()));
+		explosionAudioClips.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/detonate2.mp3").toString()));
+		explosionAudioClips.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/detonate3.mp3").toString()));
+		explosionAudioClips.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/detonate4.mp3").toString()));
 		
 		Random random = new Random();
 		AudioClip explosion = explosionAudioClips.get(random.nextInt(explosionAudioClips.size()));
@@ -101,9 +102,9 @@ public class Defuser {
 		
 		if (cellsBoard.verifyWinCondition()) {
 			
-			AudioClip win = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/win.mp3");
+			AudioClip win = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/win.mp3").toString());
 			win.setVolume(0.3);
-			AudioClip victory = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/victory1.mp3");
+			AudioClip victory = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/victory1.mp3").toString());
 			victory.setVolume(0.3);
 			
 			win.play();

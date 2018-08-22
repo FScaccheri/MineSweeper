@@ -1,6 +1,7 @@
 package handlers;
 
 
+
 import javafx.event.EventHandler;
 
 import javafx.scene.input.MouseButton;
@@ -11,6 +12,7 @@ import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
 import view.CellButton;
+import view.ResourceHandler;
 
 public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 
@@ -28,10 +30,10 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 		Position position = cellButton.getPosition();
 		Cell cell = CellsBoard.getInstance().getCell(position);
 		MouseButton mouseButton = event.getButton();
-		
-		AudioClip clickAudio = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/click.mp3");
+
+		AudioClip clickAudio = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/click.mp3").toString());
 		clickAudio.setVolume(0.3);
-		AudioClip flagAudio = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/flag.mp3");
+		AudioClip flagAudio = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/flag.mp3").toString());
 		flagAudio.setVolume(0.3);
 		
 		if (mouseButton == MouseButton.PRIMARY) {
