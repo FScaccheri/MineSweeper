@@ -1,7 +1,6 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import handlers.EasyButtonEventHandler;
 import handlers.HardButtonEventHandler;
@@ -37,12 +36,12 @@ public class MainMenu extends VBox{
 		this.setAlignment(Pos.BOTTOM_CENTER);
 		this.buttonContainer.setPadding(new Insets(30));
 		
-		Image logo = new Image("file:src/view/images/minesweeper.png");
+		Image logo = new Image("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/minesweeper.png");
 		BackgroundImage background = new BackgroundImage(logo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		this.setBackground(new Background(background));
 		
 		/*
-		AudioClip mainMenuAudio = new AudioClip("file:src/view/sounds/mainmenu2.mp3");
+		AudioClip mainMenuAudio = new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/mainmenu2.mp3");
 		mainMenuAudio.setVolume(0.2);
 		mainMenuAudio.setCycleCount(AudioClip.INDEFINITE);
 		mainMenuAudio.play();
@@ -75,7 +74,7 @@ public class MainMenu extends VBox{
 
 	private ArrayList<AudioClip> setupAudioClips() {
 		
-		ArrayList collection = new ArrayList<AudioClip>();
+		ArrayList<AudioClip> collection = new ArrayList<AudioClip>();
 		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup1.mp3"));
 		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup2.mp3"));
 		collection.add(new AudioClip("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/sounds/setup3.mp3"));
@@ -91,13 +90,13 @@ public class MainMenu extends VBox{
 		
 		ArrayList<AudioClip> audioClips = this.setupAudioClips();
 		
-		EasyButtonEventHandler easyEventHandler = new EasyButtonEventHandler(stage, this, this.easyDiffButton, audioClips);
+		EasyButtonEventHandler easyEventHandler = new EasyButtonEventHandler(stage, this, audioClips);
 		this.easyDiffButton.setOnAction(easyEventHandler);
 		
-		MediumButtonEventHandler medEventHandler = new MediumButtonEventHandler(stage, this, this.medDiffButton, audioClips);
+		MediumButtonEventHandler medEventHandler = new MediumButtonEventHandler(stage, this, audioClips);
 		this.medDiffButton.setOnAction(medEventHandler);
 		
-		HardButtonEventHandler hardEventHandler = new HardButtonEventHandler(stage, this, this.hardDiffButton, audioClips);
+		HardButtonEventHandler hardEventHandler = new HardButtonEventHandler(stage, this, audioClips);
 		this.hardDiffButton.setOnAction(hardEventHandler);
 		
 	}
@@ -112,7 +111,7 @@ public class MainMenu extends VBox{
 
 	public Scene creteGameScene() {
 		
-		Scene gameScene = new Scene(new GamePane(), 1200, 800);
+		Scene gameScene = new Scene(new GamePane(), 1500, 900);
 		return gameScene;
 	}
 	

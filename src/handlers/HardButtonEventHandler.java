@@ -1,13 +1,11 @@
 package handlers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.game.Defuser;
@@ -17,14 +15,12 @@ public class HardButtonEventHandler implements EventHandler<ActionEvent> {
 
 	private Stage stage;
 	private MainMenu mainMenu;
-	private Button hardDiffButoon;
 	private ArrayList<AudioClip> audioClips;
 
-	public HardButtonEventHandler(Stage stage, MainMenu mainMenu, Button hardDiffButton, ArrayList<AudioClip> audioClips) {
+	public HardButtonEventHandler(Stage stage, MainMenu mainMenu, ArrayList<AudioClip> audioClips) {
 		
 		this.stage = stage;
 		this.mainMenu = mainMenu;
-		this.hardDiffButoon = hardDiffButton;
 		this.audioClips = audioClips;
 	}
 	

@@ -1,6 +1,7 @@
-package model.game;
+package model.cells;
 
-import model.cells.Cell;
+import model.game.Position;
+import model.game.Terrorist;
 
 public class CellsBoard{
 
@@ -20,9 +21,8 @@ public class CellsBoard{
 	
 	public void generate(int difficulty) {
 		
-		this.rangeFactor = 6;
+		this.rangeFactor = 7; // I set it up here because I can't make a constructor
 		this.range = difficulty * this.rangeFactor;
-		System.out.println("Range is " + this.range);
 		
 		// Initialize this.cells
 		
@@ -40,18 +40,6 @@ public class CellsBoard{
 				
 			}
 		}
-		
-		/*VERIFICATION ONLY
-		boolean OK = true;
-		for (int y = 0; y < range; y++) {
-			for( int x = 0; x < range; x++) {
-				if(cells[x][y] == null)
-					OK = false;
-			}
-		}
-		if (OK)
-			System.out.println("Board generation: OK");
-		*///VERIFICATION ONLY
 		
 		//Link Cells close to each other
 		

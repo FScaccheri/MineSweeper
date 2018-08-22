@@ -2,13 +2,16 @@ package model.game;
 
 import java.util.Random;
 
+import model.cells.CellsBoard;
+
 
 public class Terrorist {
 	
 	//Singleton Class
 	
 	private Random random;
-	private int diffFactor;
+	private double diffFactor;
+	private int minesAmount;
 	private static Terrorist instance;
 		
 	public static Terrorist getInstance() {
@@ -21,14 +24,13 @@ public class Terrorist {
 
 	public void addMines() {
 		
-		this.diffFactor = 5;
+		this.diffFactor = 4.9;
 		
 		random = new Random();
 		
 		int range = CellsBoard.getInstance().range();
 		
-		int minesAmount = Defuser.getInstance().difficulty() * this.diffFactor;
-		System.out.println("Mines: " + minesAmount);
+		this.minesAmount = (int)((Math.pow(Defuser.getInstance().boardRange(), 2)) / this.diffFactor);
 
 		// I add only 1 mine for testing
 		for (int i = 0; i < minesAmount; ) {
@@ -39,16 +41,16 @@ public class Terrorist {
 			Position position = new Position (x, y);
 			
 			if (!CellsBoard.getInstance().getCell(position).hasMine()) {
-				System.out.println(x + ", " + y);
+				
 				CellsBoard.getInstance().getCell(position).addMine();
 				i++;
-			} else {System.out.println("Repetido");} // DELETE LATER
+			}
 		}
 	}
 	
 	public int totalMines() {
 		
-		return this.diffFactor * Defuser.getInstance().difficulty();
+		return this.minesAmount;
 	}
 
 }

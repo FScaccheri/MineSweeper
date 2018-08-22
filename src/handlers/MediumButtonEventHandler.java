@@ -1,13 +1,11 @@
 package handlers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.game.Defuser;
@@ -17,14 +15,12 @@ public class MediumButtonEventHandler implements EventHandler<ActionEvent> {
 
 	private Stage stage;
 	private MainMenu mainMenu;
-	private Button medDiffButton;
 	private ArrayList<AudioClip> audioClips;
 
-	public MediumButtonEventHandler(Stage stage, MainMenu mainMenu, Button medDiffButton, ArrayList<AudioClip> audioClips) {
+	public MediumButtonEventHandler(Stage stage, MainMenu mainMenu, ArrayList<AudioClip> audioClips) {
 		
 		this.stage = stage;
 		this.mainMenu = mainMenu;
-		this.medDiffButton = medDiffButton;
 		this.audioClips = audioClips;
 	}
 	

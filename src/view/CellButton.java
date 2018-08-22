@@ -1,20 +1,19 @@
 package view;
 
-import java.util.Collection;
-
 import handlers.CellButtonEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.cells.Cell;
-import model.game.CellsBoard;
+import model.cells.CellsBoard;
+import model.game.Defuser;
 import model.game.Position;
 
 public class CellButton extends Button{
 	
 	private Position position;
-	private Image flagImage;
 	private int mines;
+	private int cellSize;
 
 	public CellButton(Position position, int mines) {
 
@@ -23,9 +22,8 @@ public class CellButton extends Button{
 		
 		this.mines = mines;
 		this.position = position;
-		this.setPrefSize(50, 50);
-		
-		this.flagImage = new Image ("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/flag.png");
+		this.cellSize = 40 + 10 * (3 - Defuser.getInstance().difficulty());
+		this.setPrefSize(cellSize, cellSize);
 		
 		this.setOnMouseClicked(new CellButtonEventHandler(this));
 	}
@@ -42,8 +40,11 @@ public class CellButton extends Button{
 			
 			Image flagImg = new Image ("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/redflag.png");
 			ImageView flagImgView = new ImageView(flagImg);
-			flagImgView.setFitHeight(30);
-			flagImgView.setFitWidth(30);
+			
+			int imgSize = 20 + 5 * (3 - Defuser.getInstance().difficulty());
+			
+			flagImgView.setFitHeight(imgSize);
+			flagImgView.setFitWidth(imgSize);
 			this.setGraphic(flagImgView);
 			
 		}
@@ -54,10 +55,12 @@ public class CellButton extends Button{
 
 	public void reveal() {
 		
+		int size = 175 +  35 * (3 - Defuser.getInstance().difficulty());
+		
 		if (this.mines != 0) {
 			
 			this.setText(Integer.toString(this.mines));
-			this.setStyle("-fx-font-size: 200%; -fx-text-fill: #2661e8");
+			this.setStyle("-fx-font-size: " + size + "%; -fx-text-fill: #2661e8");
 		}
 		this.setDisable(true);
 	}

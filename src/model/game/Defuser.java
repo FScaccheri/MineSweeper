@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import model.cells.Cell;
+import model.cells.CellsBoard;
 import view.CellButtonsBoard;
 
 public class Defuser {
@@ -50,8 +51,11 @@ public class Defuser {
 		
 		Image mineImg = new Image("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/mine.png");
 		ImageView mineImgView = new ImageView(mineImg);
-		mineImgView.setFitHeight(30);
-		mineImgView.setFitWidth(30);
+		
+		int imgSize = 20 + 5 * (3 - this.difficulty);
+				
+		mineImgView.setFitHeight(imgSize);
+		mineImgView.setFitWidth(imgSize);
 		CellButtonsBoard.getInstance().getCellButton(position).setGraphic(mineImgView);
 		
 		ArrayList<AudioClip> explosionAudioClips = new ArrayList<AudioClip>();
@@ -71,7 +75,6 @@ public class Defuser {
 		lossAlert.setContentText("Gracias por jugar");
 		lossAlert.showAndWait();
 		
-		System.out.println("Exploded!");
 		System.exit(0);
 		
 		

@@ -1,11 +1,10 @@
 package view;
 
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.game.CellsBoard;
+import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
 

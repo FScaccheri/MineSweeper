@@ -1,24 +1,16 @@
 package handlers;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Random;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import model.cells.Cell;
-import model.game.CellsBoard;
+import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
 import view.CellButton;
-import view.CellButtonsBoard;
 
 public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 

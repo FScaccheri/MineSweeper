@@ -1,14 +1,11 @@
 package handlers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.game.Defuser;
@@ -19,13 +16,11 @@ public class EasyButtonEventHandler implements EventHandler<ActionEvent> {
 	private Stage stage;
 	private MainMenu mainMenu;
 	private ArrayList<AudioClip> audioClips;
-	private Button easyDiffButton;
 
-	public EasyButtonEventHandler(Stage stage, MainMenu mainMenu, Button easyDiffButton, ArrayList<AudioClip> audioClips) {
+	public EasyButtonEventHandler(Stage stage, MainMenu mainMenu, ArrayList<AudioClip> audioClips) {
 		
 		this.stage = stage;
 		this.mainMenu = mainMenu;
-		this.easyDiffButton = easyDiffButton;
 		this.audioClips = audioClips;
 	}
 	
