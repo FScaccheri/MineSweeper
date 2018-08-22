@@ -50,7 +50,7 @@ public class Defuser {
 	
 	public void endGame(Position position) {
 		
-		Image mineImg = new Image("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/mine.png");
+		Image mineImg = new Image(ResourceHandler.getInstance().getClass().getResource("images/mine.png").toString());
 		ImageView mineImgView = new ImageView(mineImg);
 		
 		int imgSize = 20 + 5 * (3 - this.difficulty);

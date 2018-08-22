@@ -38,7 +38,7 @@ public class CellButton extends Button{
 		Cell cell = CellsBoard.getInstance().getCell(this.position);
 		if (cell.isFlagged()) {	
 			
-			Image flagImg = new Image ("file:///c:/Users/Franco/proyectos/MineSweeper/src/view/images/redflag.png");
+			Image flagImg = new Image (ResourceHandler.getInstance().getClass().getResource("images/redflag.png").toString());
 			ImageView flagImgView = new ImageView(flagImg);
 			
 			int imgSize = 20 + 5 * (3 - Defuser.getInstance().difficulty());
