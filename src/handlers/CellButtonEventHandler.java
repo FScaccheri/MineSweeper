@@ -41,7 +41,6 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 			this.cellButton.setDisable(true);	
 			clickAudio.play();
 			cell.reveal();
-			Defuser.getInstance().update();	
 			
 		}
 		
@@ -51,7 +50,10 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 			this.cellButton.toggleFlagView();
 			flagAudio.play();
 			this.cellButton.setOnMouseClicked(new RightClickOnFlagEventHandler(cell, this.cellButton));
+			Defuser.getInstance().substractCurrentMines();
 		}	
+		
+		Defuser.getInstance().update();
 
 		
 	}

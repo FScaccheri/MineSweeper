@@ -6,6 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import model.cells.Cell;
+import model.game.Defuser;
 import view.CellButton;
 import view.ResourceHandler;
 
@@ -55,8 +56,11 @@ public class RightClickOnFlagEventHandler implements EventHandler<MouseEvent>{
 			//flagAudio.play();						// AUDIOCLIP
 			flagMediaPlayer.play();					// MEDIAPLAYER
 			this.cellButton.setOnMouseClicked(new CellButtonEventHandler(this.cellButton));
+			Defuser.getInstance().addCurrentMines();
 			
 		}
+		
+		Defuser.getInstance().update();
 		
 	}
 

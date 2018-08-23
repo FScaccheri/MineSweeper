@@ -31,7 +31,7 @@ public class Terrorist {
 		int range = CellsBoard.getInstance().range();
 		
 		this.minesAmount = (int)((Math.pow(Defuser.getInstance().boardRange(), 2)) / this.diffFactor);
-		System.out.println(this.minesAmount);
+		//System.out.println(this.minesAmount);
 
 		// I add only 1 mine for testing
 		for (int i = 0; i < minesAmount; ) {

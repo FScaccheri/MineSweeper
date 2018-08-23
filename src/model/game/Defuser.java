@@ -27,6 +27,7 @@ public class Defuser {
 	private static Defuser instance;
 	private int difficulty;
 	private Stage stage;
+	private int currentMines;
 	private GamePane gamePane;
 	
 	public static Defuser getInstance() {
@@ -38,6 +39,7 @@ public class Defuser {
 	public void generateBoard() {
 		
 		CellsBoard.getInstance().generate(difficulty);
+		this.currentMines = Terrorist.getInstance().totalMines();
 	}
 
 	public void setDifficulty(int difficulty) {
@@ -97,12 +99,10 @@ public class Defuser {
 		if(result.isPresent() && result.get() == retryButton) {
 			
 			this.stage.setScene(new Scene(new GamePane(), 1500, 900));
-			System.out.println("RETRY");
 		}
 		
 		if(result.isPresent() && result.get() == ButtonType.CLOSE) {
 			
-			System.out.println("CLOSE");
 			System.exit(0);
 		}		
 		
@@ -126,6 +126,8 @@ public class Defuser {
 				
 			}
 		}
+		
+		this.gamePane.updateMines();
 		
 		if (cellsBoard.verifyWinCondition()) {
 			
@@ -154,9 +156,29 @@ public class Defuser {
 		this.stage = stage;
 		
 	}
+	
+	public void addCurrentMines() {
+
+		this.currentMines++;
+		
+	}
+
+	public void substractCurrentMines() {
+		
+		this.currentMines--;
+		
+	}
+
+	public int currentMines() {
+		
+		return this.currentMines;
+	}
 
 	public void setGamePane(GamePane gamePane) {
+
 		this.gamePane = gamePane;
 		
 	}
+
+	
 }

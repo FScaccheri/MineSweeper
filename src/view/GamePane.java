@@ -1,9 +1,16 @@
 package view;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
@@ -13,7 +20,6 @@ public class GamePane extends BorderPane{
 	private Defuser defuser;
 	private CellButtonsBoard buttonsBoard;
 	private VBox bigContainer;
-	private HBox topContainer;
 
 	public GamePane(){
 		
@@ -25,31 +31,31 @@ public class GamePane extends BorderPane{
 		
 		this.setPrefSize(500, 500);
 		
-		this.bigContainer = new VBox();
-		this.bigContainer.setAlignment(Pos.CENTER);
-		this.setCenter(bigContainer);
-
-		this.topContainer = new HBox();
-		this.topContainer.setAlignment(Pos.CENTER);
-		
 		this.setBoardView();
 		
+	}
+
+	private void setMinesBox() {
 		
-		//Test Button (use for reference)
-		/*
-		HBox container = new HBox();
-		container.setAlignment(Pos.CENTER);
-		Button button = new Button("Test");
-		button.setPrefSize(80, 40);
-		button.setFont(new Font("Arial", 12));
+		StackPane pointsPane = new StackPane();
+		pointsPane.setAlignment(Pos.CENTER);
+		pointsPane.setPadding(new Insets(0, 0, 30, 0));
+		Rectangle rect = new Rectangle(80, 40, Color.ANTIQUEWHITE);
+		int mines = Defuser.getInstance().currentMines();
+		Text text = new Text("Mines: " + Integer.toString(mines));
+		pointsPane.getChildren().addAll(rect, text);
 		
-		container.getChildren().add(button);
+		this.bigContainer.getChildren().add(pointsPane);
 		
-		this.setCenter(container);		
-		*/
 	}
 
 	public void setBoardView() {
+		
+		this.bigContainer = new VBox();
+		this.bigContainer.setAlignment(Pos.CENTER);		
+		this.setCenter(bigContainer);
+		
+		this.setMinesBox();
 
 		this.buttonsBoard.setRange();
 		
@@ -71,6 +77,20 @@ public class GamePane extends BorderPane{
 				
 			}
 		}
+		
+	}
+	
+	public void updateMines() {
+		
+		StackPane pointsPane = (StackPane)this.bigContainer.getChildren().get(0);
+		pointsPane.setAlignment(Pos.CENTER);
+		pointsPane.setPadding(new Insets(0, 0, 30, 0));
+		Rectangle rect = new Rectangle(80, 40, Color.ANTIQUEWHITE);
+		int mines = Defuser.getInstance().currentMines();
+		Text text = new Text("Mines: " + Integer.toString(mines));
+		pointsPane.getChildren().addAll(rect, text);
+		
+		
 		
 	}
 

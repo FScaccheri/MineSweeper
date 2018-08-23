@@ -1,6 +1,8 @@
-MineSweeper! V1.1
+MineSweeper! V1.2
 
--Fixed file locating bugs that caused the game to crash.
+-Added Retry and Close options after you lose.
+-Added a Mines counter that updates with each Flag.
+
 
 You will need Java Runtime Environment (JRE) to run this game. Download it from:
 **/-----------------------------/**
