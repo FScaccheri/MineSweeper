@@ -18,6 +18,7 @@ public class GamePane extends BorderPane{
 	public GamePane(){
 		
 		this.defuser = Defuser.getInstance();
+		defuser.setGamePane(this);
 		defuser.generateBoard();
 		
 		this.buttonsBoard = CellButtonsBoard.getInstance();

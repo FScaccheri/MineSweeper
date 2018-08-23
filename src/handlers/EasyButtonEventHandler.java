@@ -9,18 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.game.Defuser;
+import view.GamePane;
 import view.MainMenu;
 
 public class EasyButtonEventHandler implements EventHandler<ActionEvent> {
 
 	private Stage stage;
-	private MainMenu mainMenu;
 	private ArrayList<AudioClip> audioClips;
 
-	public EasyButtonEventHandler(Stage stage, MainMenu mainMenu, ArrayList<AudioClip> audioClips) {
+	public EasyButtonEventHandler(Stage stage, ArrayList<AudioClip> audioClips) {
 		
 		this.stage = stage;
-		this.mainMenu = mainMenu;
 		this.audioClips = audioClips;
 	}
 	
@@ -28,14 +27,14 @@ public class EasyButtonEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		
 		Defuser.getInstance().setDifficulty(1);
-		Scene scene = mainMenu.creteGameScene();
+		Scene gameScene = new Scene(new GamePane(), 1500, 900);
 		
 		Random random = new Random();
 		AudioClip audio = this.audioClips.get(random.nextInt(this.audioClips.size()));
 		audio.setVolume(0.3);
 		audio.play();
 		
-		this.stage.setScene(scene);
+		this.stage.setScene(gameScene);
 	}
 
 }

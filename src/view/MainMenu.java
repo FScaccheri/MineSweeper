@@ -16,6 +16,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.game.Defuser;
 
 public class MainMenu extends VBox{
 	
@@ -27,6 +28,7 @@ public class MainMenu extends VBox{
 
 	public MainMenu(Stage stage) {
 		
+		Defuser.getInstance().setStage(stage);
 		this.buttonContainer = new HBox();
 		this.buttonContainer.setSpacing(20);
 		this.buttonContainer.setAlignment(Pos.CENTER);
@@ -90,13 +92,13 @@ public class MainMenu extends VBox{
 		
 		ArrayList<AudioClip> audioClips = this.setupAudioClips();
 		
-		EasyButtonEventHandler easyEventHandler = new EasyButtonEventHandler(stage, this, audioClips);
+		EasyButtonEventHandler easyEventHandler = new EasyButtonEventHandler(stage, audioClips);
 		this.easyDiffButton.setOnAction(easyEventHandler);
 		
-		MediumButtonEventHandler medEventHandler = new MediumButtonEventHandler(stage, this, audioClips);
+		MediumButtonEventHandler medEventHandler = new MediumButtonEventHandler(stage, audioClips);
 		this.medDiffButton.setOnAction(medEventHandler);
 		
-		HardButtonEventHandler hardEventHandler = new HardButtonEventHandler(stage, this, audioClips);
+		HardButtonEventHandler hardEventHandler = new HardButtonEventHandler(stage, audioClips);
 		this.hardDiffButton.setOnAction(hardEventHandler);
 		
 	}
@@ -107,13 +109,6 @@ public class MainMenu extends VBox{
 		
 		this.buttonContainer.getChildren().addAll(easyDiffButton, medDiffButton, hardDiffButton);
 		
-	}
-
-	public Scene creteGameScene() {
-		
-		Scene gameScene = new Scene(new GamePane(), 1500, 900);
-		return gameScene;
-	}
-	
+	}	
 	
 }

@@ -1,16 +1,23 @@
 package model.game;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
+import javafx.stage.Stage;
 import model.cells.Cell;
 import model.cells.CellsBoard;
 import view.CellButtonsBoard;
+import view.GamePane;
+import view.MainMenu;
 import view.ResourceHandler;
 
 public class Defuser {
@@ -19,6 +26,8 @@ public class Defuser {
 	
 	private static Defuser instance;
 	private int difficulty;
+	private Stage stage;
+	private GamePane gamePane;
 	
 	public static Defuser getInstance() {
 		if(instance == null)
@@ -70,14 +79,32 @@ public class Defuser {
 		explosion.setVolume(0.5);
 		explosion.play();
 		
-		Alert lossAlert = new Alert(AlertType.WARNING);
+		Alert lossAlert = new Alert(AlertType.CONFIRMATION);
 		lossAlert.setTitle("BOOM");
 		lossAlert.setHeaderText("Perdiste!");
 		lossAlert.setContentText("Gracias por jugar");
-		lossAlert.showAndWait();
 		
-		System.exit(0);
+		lossAlert.getButtonTypes().remove(ButtonType.OK);
+		ButtonType retryButton = new ButtonType("Retry", ButtonBar.ButtonData.OK_DONE);
+		lossAlert.getButtonTypes().add(retryButton);
 		
+		lossAlert.getButtonTypes().remove(ButtonType.CANCEL);
+		lossAlert.getButtonTypes().add(ButtonType.CLOSE);
+		
+		
+		
+		Optional<ButtonType> result = lossAlert.showAndWait();
+		if(result.isPresent() && result.get() == retryButton) {
+			
+			this.stage.setScene(new Scene(new GamePane(), 1500, 900));
+			System.out.println("RETRY");
+		}
+		
+		if(result.isPresent() && result.get() == ButtonType.CLOSE) {
+			
+			System.out.println("CLOSE");
+			System.exit(0);
+		}		
 		
 	}
 
@@ -120,6 +147,16 @@ public class Defuser {
 			
 		}
 			
+		
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+		
+	}
+
+	public void setGamePane(GamePane gamePane) {
+		this.gamePane = gamePane;
 		
 	}
 }
