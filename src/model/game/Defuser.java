@@ -38,6 +38,7 @@ public class Defuser {
 	
 	public void generateBoard() {
 		
+		Terrorist.getInstance().setTotalMines(difficulty);
 		CellsBoard.getInstance().generate(difficulty);
 		this.currentMines = Terrorist.getInstance().totalMines();
 	}
@@ -57,6 +58,16 @@ public class Defuser {
 	public int boardRange() {
 		
 		return CellsBoard.getInstance().range();
+	}
+	
+	public int boardRangeX() {
+		
+		return CellsBoard.getInstance().rangeX();
+	}
+	
+	public int boardRangeY() {
+		
+		return CellsBoard.getInstance().rangeY();
 	}
 	
 	public void endGame(Position position) {
@@ -82,15 +93,14 @@ public class Defuser {
 		explosion.play();
 		
 		Alert lossAlert = new Alert(AlertType.CONFIRMATION);
-		lossAlert.setTitle("BOOM");
-		lossAlert.setHeaderText("Perdiste!");
-		lossAlert.setContentText("Gracias por jugar");
+		lossAlert.setTitle("Defeat...");
+		lossAlert.setHeaderText("You lost!");
+		lossAlert.setContentText("Retry?");
 		
 		lossAlert.getButtonTypes().remove(ButtonType.OK);
+		lossAlert.getButtonTypes().remove(ButtonType.CANCEL);
 		ButtonType retryButton = new ButtonType("Retry", ButtonBar.ButtonData.OK_DONE);
 		lossAlert.getButtonTypes().add(retryButton);
-		
-		lossAlert.getButtonTypes().remove(ButtonType.CANCEL);
 		lossAlert.getButtonTypes().add(ButtonType.CLOSE);
 		
 		
@@ -113,8 +123,8 @@ public class Defuser {
 		CellButtonsBoard buttonsBoard = CellButtonsBoard.getInstance();
 		CellsBoard cellsBoard = CellsBoard.getInstance();
 		
-		for (int y = 0; y < cellsBoard.range(); y++) {
-			for(int x = 0; x < cellsBoard.range(); x++) {
+		for (int y = 0; y < cellsBoard.rangeY(); y++) {
+			for(int x = 0; x < cellsBoard.rangeX(); x++) {
 				
 				Position position = new Position(x,y);
 				
@@ -132,20 +142,36 @@ public class Defuser {
 		if (cellsBoard.verifyWinCondition()) {
 			
 			AudioClip win = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/win.mp3").toString());
-			win.setVolume(0.3);
+			win.setVolume(0.2);
 			AudioClip victory = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/victory1.mp3").toString());
-			victory.setVolume(0.3);
+			victory.setVolume(0.2);
 			
 			win.play();
 			victory.play();
 			
-			Alert winAlert = new Alert(AlertType.WARNING);
-			winAlert.setTitle("Victory");
-			winAlert.setHeaderText("Ganaste!");
-			winAlert.setContentText("Gracias por jugar");
-			winAlert.showAndWait();
+			Alert winAlert = new Alert(AlertType.CONFIRMATION);
+			winAlert.setTitle("Victory!");
+			winAlert.setHeaderText("You won!");
+			winAlert.setContentText("Thanks for playing");
 			
-			System.exit(0);
+			winAlert.getButtonTypes().remove(ButtonType.OK);
+			winAlert.getButtonTypes().remove(ButtonType.CANCEL);
+			ButtonType retryButton = new ButtonType("Retry", ButtonBar.ButtonData.OK_DONE);
+			winAlert.getButtonTypes().add(retryButton);
+			winAlert.getButtonTypes().add(ButtonType.CLOSE);
+			
+			Optional<ButtonType> result = winAlert.showAndWait();
+			if(result.isPresent() && result.get() == retryButton) {
+				
+				this.stage.setScene(new Scene(new GamePane(), 1500, 900));
+			}
+			
+			if(result.isPresent() && result.get() == ButtonType.CLOSE) {
+				
+				System.exit(0);
+			}
+			
+			
 			
 		}
 			

@@ -24,20 +24,20 @@ public class Terrorist {
 
 	public void addMines() {
 		
-		this.diffFactor = 4.9;
+		
+		//this.diffFactor = 4.9;
 		
 		random = new Random();
 		
-		int range = CellsBoard.getInstance().range();
-		
-		this.minesAmount = (int)((Math.pow(Defuser.getInstance().boardRange(), 2)) / this.diffFactor);
-		//System.out.println(this.minesAmount);
+		//int range = CellsBoard.getInstance().range();
+		int rangeX = Defuser.getInstance().boardRangeX();
+		int rangeY = Defuser.getInstance().boardRangeY();
 
-		// I add only 1 mine for testing
+
 		for (int i = 0; i < minesAmount; ) {
 		
-			int x = random.nextInt(range);
-			int y = random.nextInt(range);
+			int x = random.nextInt(rangeX);
+			int y = random.nextInt(rangeY);
 			
 			Position position = new Position (x, y);
 			
@@ -52,6 +52,22 @@ public class Terrorist {
 	public int totalMines() {
 		
 		return this.minesAmount;
+	}
+
+	public void setTotalMines(int difficulty) {
+
+		switch (difficulty) {
+		
+		case 1: minesAmount = 10;
+				break;
+		
+		case 2: minesAmount = 40;
+				break;
+		
+		case 3: minesAmount = 99;
+				break;
+		}
+		
 	}
 
 }

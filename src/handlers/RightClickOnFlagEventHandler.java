@@ -37,10 +37,10 @@ public class RightClickOnFlagEventHandler implements EventHandler<MouseEvent>{
 		Media flagAudio = new Media(ResourceHandler.getInstance().getClass().getResource("sounds/flag.mp3").toString());
 		
 		MediaPlayer clickMediaPlayer = new MediaPlayer(clickAudio);
-		clickMediaPlayer.setVolume(0.3);
+		clickMediaPlayer.setVolume(0.15);
 		
 		MediaPlayer flagMediaPlayer = new MediaPlayer(flagAudio);
-		flagMediaPlayer.setVolume(0.3);
+		flagMediaPlayer.setVolume(0.15);
 		
 		
 		

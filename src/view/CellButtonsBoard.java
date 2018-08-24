@@ -1,14 +1,16 @@
 package view;
 
 
+import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
 
 public class CellButtonsBoard{
 	
 	private static CellButtonsBoard instance;
-	private int range;
 	private CellButton[][] cellButtons;
+	private int rangeX;
+	private int rangeY;
 
 	public static CellButtonsBoard getInstance() {
 		
@@ -17,10 +19,6 @@ public class CellButtonsBoard{
 		return instance;
 	}
 
-	public int range() {
-		
-		return this.range;
-	}
 
 	public CellButton getCellButton(Position position) {
 		int x = position.getX();
@@ -40,9 +38,10 @@ public class CellButtonsBoard{
 
 	public void setRange() {
 
-		int range = Defuser.getInstance().boardRange();
-		
-		this.cellButtons = new CellButton[range][range];
+		//int range = Defuser.getInstance().boardRange();
+		this.rangeX = Defuser.getInstance().boardRangeX();
+		this.rangeY = Defuser.getInstance().boardRangeY();
+		this.cellButtons = new CellButton[rangeX][rangeY];
 		
 	}
 

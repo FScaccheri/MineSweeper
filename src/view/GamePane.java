@@ -10,6 +10,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import model.cells.CellsBoard;
 import model.game.Defuser;
@@ -40,9 +43,14 @@ public class GamePane extends BorderPane{
 		StackPane pointsPane = new StackPane();
 		pointsPane.setAlignment(Pos.CENTER);
 		pointsPane.setPadding(new Insets(0, 0, 30, 0));
-		Rectangle rect = new Rectangle(80, 40, Color.ANTIQUEWHITE);
+		Rectangle rect = new Rectangle(200, 60, Color.ANTIQUEWHITE);
 		int mines = Defuser.getInstance().currentMines();
 		Text text = new Text("Mines: " + Integer.toString(mines));
+		
+		// All JavaFX Fonts
+		//System.out.println(javafx.scene.text.Font.getFamilies().toString());
+		
+		text.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, null, 25));
 		pointsPane.getChildren().addAll(rect, text);
 		
 		this.bigContainer.getChildren().add(pointsPane);
@@ -59,13 +67,13 @@ public class GamePane extends BorderPane{
 
 		this.buttonsBoard.setRange();
 		
-		for (int y = 0; y < defuser.boardRange(); y++) {
+		for (int y = 0; y < defuser.boardRangeY(); y++) {
 			
 			HBox smallContainer = new HBox();
 			smallContainer.setAlignment(Pos.CENTER);
 			this.bigContainer.getChildren().add(smallContainer);
 			
-			for (int x = 0; x < defuser.boardRange(); x++) {
+			for (int x = 0; x < defuser.boardRangeX(); x++) {
 				
 				Position position = new Position(x,y);
 				int mines = CellsBoard.getInstance().getCell(position).getCloseMines();
@@ -85,9 +93,11 @@ public class GamePane extends BorderPane{
 		StackPane pointsPane = (StackPane)this.bigContainer.getChildren().get(0);
 		pointsPane.setAlignment(Pos.CENTER);
 		pointsPane.setPadding(new Insets(0, 0, 30, 0));
-		Rectangle rect = new Rectangle(80, 40, Color.ANTIQUEWHITE);
+		Rectangle rect = new Rectangle(200, 60, Color.ANTIQUEWHITE);
 		int mines = Defuser.getInstance().currentMines();
 		Text text = new Text("Mines: " + Integer.toString(mines));
+		text.setFont(Font.font("Arial", FontWeight.SEMI_BOLD, null, 25));
+		
 		pointsPane.getChildren().addAll(rect, text);
 		
 		

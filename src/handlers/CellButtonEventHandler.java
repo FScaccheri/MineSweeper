@@ -32,9 +32,9 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 		MouseButton mouseButton = event.getButton();
 
 		AudioClip clickAudio = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/click.mp3").toString());
-		clickAudio.setVolume(0.3);
+		clickAudio.setVolume(0.15);
 		AudioClip flagAudio = new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/flag.mp3").toString());
-		flagAudio.setVolume(0.3);
+		flagAudio.setVolume(0.15);
 		
 		if (mouseButton == MouseButton.PRIMARY) {
 	
