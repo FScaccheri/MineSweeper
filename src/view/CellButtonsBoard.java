@@ -41,9 +41,10 @@ public class CellButtonsBoard{
 		//int range = Defuser.getInstance().boardRange();
 		this.rangeX = Defuser.getInstance().boardRangeX();
 		this.rangeY = Defuser.getInstance().boardRangeY();
-		this.cellButtons = new CellButton[rangeX][rangeY];
-		
+		this.cellButtons = new CellButton[rangeX][rangeY];		
 	}
+
+
 
 	
 	

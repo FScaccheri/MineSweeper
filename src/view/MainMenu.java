@@ -59,15 +59,15 @@ public class MainMenu extends VBox{
 		this.buttonContainer.getChildren().add(startButton);
 
 		
-		this.easyDiffButton = new Button("Facil");
+		this.easyDiffButton = new Button("Easy");
 		this.easyDiffButton.setPrefSize(80, 40);
 		this.easyDiffButton.setFont(Font.font("Arial", FontWeight.BOLD , 12));
 		
-		this.medDiffButton = new Button ("Medio");
+		this.medDiffButton = new Button ("Medium");
 		this.medDiffButton.setPrefSize(80, 40);
 		this.medDiffButton.setFont(Font.font("Arial", FontWeight.BOLD , 12));
 		
-		this.hardDiffButton = new Button ("Dificil");
+		this.hardDiffButton = new Button ("Hard");
 		this.hardDiffButton.setPrefSize(80, 40);
 		this.hardDiffButton.setFont(Font.font("Arial", FontWeight.BOLD , 12));
 		

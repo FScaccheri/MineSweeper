@@ -70,4 +70,21 @@ public class Terrorist {
 		
 	}
 
+	public void replaceMineAt(Position position) {
+		
+		
+		Position newPosition = new Position(position.getX(), position.getY());
+		CellsBoard.getInstance().getCell(position).removeMine();
+		Random random = new Random();
+		
+		while (newPosition.isEqualTo(position) || CellsBoard.getInstance().getCell(newPosition).hasMine()) {
+			
+			int randomX = random.nextInt(CellsBoard.getInstance().rangeX());
+			int randomY = random.nextInt(CellsBoard.getInstance().rangeY());
+			newPosition.setXY(randomX, randomY);
+		
+		}
+		CellsBoard.getInstance().getCell(newPosition).addMine();
+	}
+
 }

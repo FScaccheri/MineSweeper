@@ -1,8 +1,6 @@
-MineSweeper! V1.2
+MineSweeper! V1.3
 
--Added Retry and Close options after you win and lose.
--Added a Mines counter that updates with each Flag.
--Adjusted Board size and Mine count to match the original Minesweeper's.
+-Improved distribution algorithm. It is now impossible to lose on the first try of every game.
 
 You will need Java Runtime Environment (JRE) to run this game. Download it from:
 **/-----------------------------/**

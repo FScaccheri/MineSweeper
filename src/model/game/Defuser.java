@@ -29,6 +29,7 @@ public class Defuser {
 	private Stage stage;
 	private int currentMines;
 	private GamePane gamePane;
+	private boolean firstClick;
 	
 	public static Defuser getInstance() {
 		if(instance == null)
@@ -38,6 +39,7 @@ public class Defuser {
 	
 	public void generateBoard() {
 		
+		this.firstClick = true;
 		Terrorist.getInstance().setTotalMines(difficulty);
 		CellsBoard.getInstance().generate(difficulty);
 		this.currentMines = Terrorist.getInstance().totalMines();
@@ -204,6 +206,17 @@ public class Defuser {
 
 		this.gamePane = gamePane;
 		
+	}
+	
+
+	public boolean isFirstClick() {
+		
+		return this.firstClick;
+	}
+	
+	public void firstClickDone() {
+		
+		this.firstClick = false;
 	}
 
 	

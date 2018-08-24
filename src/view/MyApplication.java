@@ -13,7 +13,7 @@ public class MyApplication extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		stage.setTitle("Buscaminas!");
+		stage.setTitle("MineSweeper!");
 
 		stage.setMaximized(false);
 		

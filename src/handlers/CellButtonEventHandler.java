@@ -11,7 +11,9 @@ import model.cells.Cell;
 import model.cells.CellsBoard;
 import model.game.Defuser;
 import model.game.Position;
+import model.game.Terrorist;
 import view.CellButton;
+import view.CellButtonsBoard;
 import view.ResourceHandler;
 
 public class CellButtonEventHandler implements EventHandler<MouseEvent>{
@@ -38,9 +40,17 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 		
 		if (mouseButton == MouseButton.PRIMARY) {
 	
-			this.cellButton.setDisable(true);	
-			clickAudio.play();
-			cell.reveal();
+			if(Defuser.getInstance().isFirstClick()){
+				
+				if(cell.hasMine())
+					Terrorist.getInstance().replaceMineAt(position);
+				Defuser.getInstance().firstClickDone();
+			}
+			
+				this.cellButton.setDisable(true);	
+				clickAudio.play();
+				cell.reveal();
+							
 			
 		}
 		

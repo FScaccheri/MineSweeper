@@ -96,4 +96,10 @@ public class Cell {
 		
 	}
 
+	public void removeMine() {
+
+		this.mine = null;
+		
+	}
+
 }
