@@ -57,10 +57,41 @@ public class CellButton extends Button{
 		
 		int size = 175 +  35 * (3 - Defuser.getInstance().difficulty());
 		
+		String fontSize = "-fx-font-size: " + size + "%; ";
+		String textFill = null;
+		
+		switch (mines) {
+		
+		case 1: textFill = "-fx-text-fill: #2661e8";
+				break;
+		
+		case 2: textFill = "-fx-text-fill: #006600";
+				break;
+		
+		case 3: textFill = "-fx-text-fill: #E50000";
+				break;
+				
+		case 4: textFill = "-fx-text-fill: #00003D";
+				break;
+				
+		case 5: textFill = "-fx-text-fill: #990000";
+				break;
+				
+		case 6: textFill = "-fx-text-fill: #005151";
+				break;
+				
+		case 7: textFill = "-fx-text-fill: #191919";
+				break;
+				
+		case 8: textFill = "-fx-text-fill: #757575";
+				break;
+		
+		
+		}
 		if (this.mines != 0) {
 			
 			this.setText(Integer.toString(this.mines));
-			this.setStyle("-fx-font-size: " + size + "%; -fx-text-fill: #2661e8");
+			this.setStyle(fontSize + textFill);
 		}
 		this.setDisable(true);
 	}

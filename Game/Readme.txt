@@ -1,6 +1,6 @@
-MineSweeper! V1.3
+MineSweeper! V1.4
 
--Improved distribution algorithm. It is now impossible to lose on the first try of every game.
+-Added a different color for each numer and a grey background for the board (it's easier for your eyes!).
 
 You will need Java Runtime Environment (JRE) to run this game. Download it from:
 **/-----------------------------/**

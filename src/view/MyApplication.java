@@ -27,6 +27,7 @@ public class MyApplication extends Application{
 		
 		stage.show();
 		
+		
 	}
 	
 	

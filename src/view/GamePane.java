@@ -3,6 +3,7 @@ package view;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -23,6 +24,7 @@ public class GamePane extends BorderPane{
 	private Defuser defuser;
 	private CellButtonsBoard buttonsBoard;
 	private VBox bigContainer;
+	private Canvas canvas;
 
 	public GamePane(){
 		
@@ -34,7 +36,20 @@ public class GamePane extends BorderPane{
 		
 		this.setPrefSize(500, 500);
 		
+		this.setCanvas();
 		this.setBoardView();
+		
+	}
+
+	private void setCanvas() {
+		
+		this.canvas = new Canvas(2000, 2000);
+		this.canvas.getGraphicsContext2D().setFill(Color.web("#002448"));
+		this.canvas.getGraphicsContext2D().setFill(Color.web("#000A15"));
+		this.canvas.getGraphicsContext2D().setFill(Color.web("#323232"));
+		this.canvas.getGraphicsContext2D().fillRect(0, 0, this.canvas.getWidth(), this.canvas.getHeight());
+		
+		this.getChildren().add(this.canvas);
 		
 	}
 
@@ -58,6 +73,7 @@ public class GamePane extends BorderPane{
 	}
 
 	public void setBoardView() {
+		
 		
 		this.bigContainer = new VBox();
 		this.bigContainer.setAlignment(Pos.CENTER);		
