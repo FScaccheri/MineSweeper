@@ -2,7 +2,7 @@ package model.game;
 
 import java.util.Random;
 
-import model.cells.CellsBoard;
+import model.cells.Position;
 
 
 public class Terrorist {
@@ -10,7 +10,6 @@ public class Terrorist {
 	//Singleton Class
 	
 	private Random random;
-	private double diffFactor;
 	private int minesAmount;
 	private static Terrorist instance;
 		
@@ -24,12 +23,7 @@ public class Terrorist {
 
 	public void addMines() {
 		
-		
-		//this.diffFactor = 4.9;
-		
 		random = new Random();
-		
-		//int range = CellsBoard.getInstance().range();
 		int rangeX = Defuser.getInstance().boardRangeX();
 		int rangeY = Defuser.getInstance().boardRangeY();
 
@@ -44,6 +38,7 @@ public class Terrorist {
 			if (!CellsBoard.getInstance().getCell(position).hasMine()) {
 				
 				CellsBoard.getInstance().getCell(position).addMine();
+				
 				i++;
 			}
 		}
@@ -72,7 +67,6 @@ public class Terrorist {
 
 	public void replaceMineAt(Position position) {
 		
-		
 		Position newPosition = new Position(position.getX(), position.getY());
 		CellsBoard.getInstance().getCell(position).removeMine();
 		Random random = new Random();
@@ -85,6 +79,7 @@ public class Terrorist {
 		
 		}
 		CellsBoard.getInstance().getCell(newPosition).addMine();
+		
 	}
 
 }

@@ -27,7 +27,7 @@ public class EasyButtonEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		
 		Defuser.getInstance().setDifficulty(1);
-		Scene gameScene = new Scene(new GamePane(), 1500, 900);
+		Scene gameScene = new Scene(new GamePane(), 1200, 700);
 		
 		Random random = new Random();
 		AudioClip audio = this.audioClips.get(random.nextInt(this.audioClips.size()));

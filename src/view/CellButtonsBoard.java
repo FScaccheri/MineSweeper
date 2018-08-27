@@ -1,9 +1,9 @@
 package view;
 
 
-import model.cells.CellsBoard;
+import model.cells.Position;
+import model.game.CellsBoard;
 import model.game.Defuser;
-import model.game.Position;
 
 public class CellButtonsBoard{
 	

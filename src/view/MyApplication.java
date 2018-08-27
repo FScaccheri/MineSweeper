@@ -21,7 +21,7 @@ public class MyApplication extends Application{
 		//Scene gameScene = new Scene(1200, 800);
 		
 		MainMenu mainMenu = new MainMenu(stage);
-		Scene mainScene = new Scene(mainMenu, 1500, 900);
+		Scene mainScene = new Scene(mainMenu, 1200, 700);
 		
 		stage.setScene(mainScene);
 		

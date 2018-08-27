@@ -15,9 +15,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.cells.CellsBoard;
+import model.cells.Position;
+import model.game.CellsBoard;
 import model.game.Defuser;
-import model.game.Position;
 
 public class GamePane extends BorderPane{
 	

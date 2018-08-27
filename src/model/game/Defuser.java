@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import model.cells.Cell;
-import model.cells.CellsBoard;
+import model.cells.Position;
 import view.CellButtonsBoard;
 import view.GamePane;
 import view.MainMenu;
@@ -74,14 +74,7 @@ public class Defuser {
 	
 	public void endGame(Position position) {
 		
-		Image mineImg = new Image(ResourceHandler.getInstance().getClass().getResource("images/mine.png").toString());
-		ImageView mineImgView = new ImageView(mineImg);
-		
-		int imgSize = 20 + 5 * (3 - this.difficulty);
-				
-		mineImgView.setFitHeight(imgSize);
-		mineImgView.setFitWidth(imgSize);
-		CellButtonsBoard.getInstance().getCellButton(position).setGraphic(mineImgView);
+		CellButtonsBoard.getInstance().getCellButton(position).setMineImage();
 		
 		ArrayList<AudioClip> explosionAudioClips = new ArrayList<AudioClip>();
 		explosionAudioClips.add(new AudioClip(ResourceHandler.getInstance().getClass().getResource("sounds/detonate1.mp3").toString()));
@@ -110,7 +103,7 @@ public class Defuser {
 		Optional<ButtonType> result = lossAlert.showAndWait();
 		if(result.isPresent() && result.get() == retryButton) {
 			
-			this.stage.setScene(new Scene(new GamePane(), 1500, 900));
+			this.stage.setScene(new Scene(new GamePane(), 1200, 700));
 		}
 		
 		if(result.isPresent() && result.get() == ButtonType.CLOSE) {
@@ -132,7 +125,9 @@ public class Defuser {
 				
 				Cell cell = cellsBoard.getCell(position);
 				
-				if(cell.visible()) 
+				CellButtonsBoard.getInstance().getCellButton(position).setMines(cell.countCloseMines());
+				
+				if (cell.visible()) 
 					
 					buttonsBoard.getCellButton(position).reveal();
 				

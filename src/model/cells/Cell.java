@@ -3,8 +3,6 @@ package model.cells;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import model.game.Position;
-
 public class Cell {
 	
 	private int closeMines;
@@ -42,6 +40,8 @@ public class Cell {
 	
 	public int countCloseMines() {
 
+		this.closeMines = 0;
+		
 		for (Cell closeCell : closeCells) {
 			
 			if (closeCell.hasMine())
@@ -59,16 +59,7 @@ public class Cell {
 	public boolean hasMine() {
 		return (this.mine != null);
 	}
-	/*
-	public void addFlag() {
-		this.flagged = true;
-		
-	}
-	
-	public void removeFlag() {
-		this.flagged = false;
-	}
-	*/
+
 	public boolean isFlagged() {
 		return this.flagged;
 	}

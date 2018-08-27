@@ -8,9 +8,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import model.cells.Cell;
-import model.cells.CellsBoard;
+import model.cells.Position;
+import model.game.CellsBoard;
 import model.game.Defuser;
-import model.game.Position;
 import model.game.Terrorist;
 import view.CellButton;
 import view.CellButtonsBoard;
@@ -49,6 +49,7 @@ public class CellButtonEventHandler implements EventHandler<MouseEvent>{
 			
 				this.cellButton.setDisable(true);	
 				clickAudio.play();
+				Defuser.getInstance().update();
 				cell.reveal();
 							
 			

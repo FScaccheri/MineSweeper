@@ -27,7 +27,7 @@ public class HardButtonEventHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent event) {
 		
 		Defuser.getInstance().setDifficulty(3);
-		Scene gameScene = new Scene(new GamePane(), 1500, 900);
+		Scene gameScene = new Scene(new GamePane(), 1200, 700);
 		
 		Random random = new Random();
 		AudioClip audio = this.audioClips.get(random.nextInt(this.audioClips.size()));

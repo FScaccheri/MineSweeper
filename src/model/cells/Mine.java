@@ -1,7 +1,6 @@
 package model.cells;
 
 import model.game.Defuser;
-import model.game.Position;
 
 public class Mine{
 	
